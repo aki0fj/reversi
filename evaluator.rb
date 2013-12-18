@@ -1,4 +1,4 @@
-﻿# -*- codinutf-8 -*-
+﻿# -*- coding: utf-8 -*-
 # evaluator.rb
 
 require 'point'

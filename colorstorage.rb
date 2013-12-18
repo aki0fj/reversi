@@ -1,4 +1,6 @@
-$KCODE = "s"
+# -*- coding: utf-8 -*-
+# colorstorage.rb
+
 #
 # Infomation of Disc(by color)
 #

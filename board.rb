@@ -1,4 +1,5 @@
-﻿$KCODE = "s"
+﻿# -*- coding: utf-8 -*-
+# board.rb
  
 require 'point'
 require 'disc'

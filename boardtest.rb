@@ -1,4 +1,5 @@
-﻿$KCODE = "s"
+﻿# -*- coding: utf-8 -*-
+# boardtest.rb
  
 require "board"
  

@@ -1,0 +1,45 @@
+@raw_board [
+    [2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+    [2, 0, 0, 0, 0, 0, 0, 0, 0, 2]
+    [2, 0, 0, 0, 0, 0, 0, 0, 0, 2]
+    [2, 0, 0, 0, 0, 0, 0, 0, 0, 2]
+    [2, 0, 0, 0,-1, 1, 0, 0, 0, 2]
+    [2, 0, 0, 0, 1,-1, 0, 0, 0, 2]
+    [2, 0, 0, 0, 0, 0, 0, 0, 0, 2]
+    [2, 0, 0, 0, 0, 0, 0, 0, 0, 2]
+    [2, 0, 0, 0, 0, 0, 0, 0, 0, 2]
+    [2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+]
+
+@movable_pos [
+    [puttable_disc1, puttable_disc2, ...]   # turn0
+    [puttable_disc1, puttable_disc2, ...]   # turn1
+    .
+    .
+]
+
+@movable_dir [
+  [
+    [ [direction-a-1, direcrion-b-1, ..] ], # row1
+    [ [direction-a-2, direcrion-b-2, ..] ], # row2
+    .
+    .
+    [ [direction-a-8, direcrion-b-8, ..] ], # row8
+  ] # turn0
+  [
+    [ [direction-a-1, direcrion-b-1, ..] ], # row1
+    [ [direction-a-2, direcrion-b-2, ..] ], # row2
+    .
+    .
+    [ [direction-a-8, direcrion-b-8, ..] ], # row8
+  ] # turn1
+  .
+  .
+]
+
+@update_log [
+  [ put_disc, flipped_disc1, flipped_disc2 ...] # turn0
+  [ put_disc, flipped_disc1, flipped_disc2 ...] # turn0
+  .
+  .
+]

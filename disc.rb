@@ -1,4 +1,4 @@
-$KCODE = "s"
+# -*- coding: utf-8 -*-
 #
 # Disc
 #

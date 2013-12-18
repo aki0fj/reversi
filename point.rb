@@ -1,4 +1,6 @@
-$KCODE = "s"
+# -*- coding: utf-8 -*-
+# point.rb
+
 #
 # Point of Disc
 #
