@@ -39,7 +39,8 @@ class HumanPlayer < Player
         exit
       else
         begin
-          point = Point[input]
+          x, y = str_to_ary(input)
+          point = Point.new(x, y)
         rescue
           puts "invalid input"
           next
@@ -52,6 +53,16 @@ class HumanPlayer < Player
       end
  
       break
+    end
+  end
+
+  def str_to_ary(str)
+    if str.size < 2
+      return [0, 0]
+    else
+      x = str.bytes.to_a[0] - "a".bytes.to_a[0] + 1
+      y = str[1].chr.to_i
+      return [x, y]
     end
   end
 end
@@ -72,6 +83,7 @@ end
 board = ConsoleBoard.new
  
 player = {}
+##player[1] = HumanPlayer.new
 player[1] = AIPlayer.new
 player[-1] = AIPlayer.new
  

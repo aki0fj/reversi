@@ -4,12 +4,11 @@ class AI
   end
  
   PRESEARCH_DEPTH = 3
-  NORMAL_DEPTH = 15
-  WLD_DEPTH = 15
-  PERFECT_DEPTH = 13
+  NORMAL_DEPTH = 6  #15
+  WLD_DEPTH = 11 #15
+  PERFECT_DEPTH = 9 #13
  
 end
- 
 require 'point'
 require 'disc'
 require 'board'
@@ -27,33 +26,43 @@ class AlphaBetaAI < AI
     end
   end
  
+  def initialize
+    @perfect_evaluator = PerfectEvaluator.new
+    @wld_evaluator = WLDEvaluator.new
+    @mid_evaluator = MidEvaluator.new
+  end
+
   def move(board)
     movables = board.get_movable_pos
  
     if movables.empty?  # no settable position
       board.pass
-      return
+      return MIN_VALUE
     end
  
     if movables.size == 1 # 1 settable position
       board.move(movables[0])
-      return
+      return MIN_VALUE
     end
  
     sort(board, movables, PRESEARCH_DEPTH)  # sort before search
  
     if Board::MAX_TURNS - board.get_turns <= WLD_DEPTH
-      limit = MAX_VALUE
+      limit = WLD_DEPTH
     else
       limit = NORMAL_DEPTH
     end
  
     eval_max = MIN_VALUE
+    point = movables[0]
+##    movables.each{|d| p d}
     for i in 0...movables.size
+##      puts "ai.move #{i}/#{movables.size} limit=#{limit}"
       board.move(movables[i])
       eval_tmp = -alphabeta(board, limit - 1, -MAX_VALUE, -MIN_VALUE)
       board.undo
  
+##      puts "eval_tmp=#{eval_tmp} eval_max=#{eval_max}"
       if eval_tmp > eval_max
         eval_max = eval_tmp
         point = movables[i]
@@ -61,6 +70,7 @@ class AlphaBetaAI < AI
     end
  
     board.move(point)
+    return eval_max
   end
  
   # search game node by alphabeta method
@@ -77,7 +87,7 @@ class AlphaBetaAI < AI
       board.undo
       return eval_tmp
     end
- 
+
     for i in 0...pos.size
       board.move(pos[i])
       eval_tmp = -alphabeta(board, limit - 1, -beta, -alpha)
@@ -110,6 +120,17 @@ class AlphaBetaAI < AI
     end
  
     return
+  end
+ 
+  def evaluate(board)
+    remain_turn = Board::MAX_TURNS - board.get_turns
+    if remain_turn <= PERFECT_DEPTH
+      @perfect_evaluator.evaluate(board)
+    elsif remain_turn <= WLD_DEPTH
+      @wld_evaluator.evaluate(board)
+    else
+      @mid_evaluator.evaluate(board)
+    end
   end
  
 end

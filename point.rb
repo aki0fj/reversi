@@ -5,7 +5,7 @@
 # Point of Disc
 #
 class Point
-  attr_reader :x, :y
+  attr_accessor :x, :y
   def initialize(x = 0, y = 0)
     @x = x
     @y = y

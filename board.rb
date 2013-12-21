@@ -231,6 +231,22 @@ class Board
     end
   end
  
+  #
+  # get liberty of point
+  #
+  def get_liberty(point)
+    liberty = 0
+    liberty += 1 if @raw_board[point.x - 1][point.y - 1] == Disc::EMPTY
+    liberty += 1 if @raw_board[point.x - 1][point.y] == Disc::EMPTY
+    liberty += 1 if @raw_board[point.x - 1][point.y + 1] == Disc::EMPTY
+    liberty += 1 if @raw_board[point.x][point.y - 1] == Disc::EMPTY
+    liberty += 1 if @raw_board[point.x][point.y + 1] == Disc::EMPTY
+    liberty += 1 if @raw_board[point.x + 1][point.y - 1] == Disc::EMPTY
+    liberty += 1 if @raw_board[point.x + 1][point.y] == Disc::EMPTY
+    liberty += 1 if @raw_board[point.x + 1][point.y + 1] == Disc::EMPTY
+    return liberty
+  end
+
   private
  
   #
@@ -289,11 +305,13 @@ class Board
   end
  
   def check_dir(x, y, disc)
+    dx = x ; dy = y
     flag = false
     while @raw_board[disc.x + x][disc.y + y] == -disc.color
+      break if @raw_board[disc.x + x][disc.y + y] != -disc.color
       flag = true # this direction has another color
-      x += x
-      y += y
+      x += dx
+      y += dy
     end
     if flag && @raw_board[disc.x + x][disc.y + y] == disc.color
       true

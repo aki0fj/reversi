@@ -26,7 +26,9 @@ class ConsoleBoard < Board
   def get_history
     history = []
     @update_log.each do |update|
-      history << ("a".bytes.to_a[0] + update[0].x - 1).chr + update[0].y.to_s
+      if update.length > 0
+        history << ("a".bytes.to_a[0] + update[0].x - 1).chr + update[0].y.to_s
+      end
     end
     return history
   end
