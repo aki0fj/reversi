@@ -1,8 +1,8 @@
 # -*- encoding: utf-8 -*-
 # reversigame.rb
  
-require "ai"
-require "consoleboard"
+require "./ai"
+require "./consoleboard"
  
 class GameException < Exception; end
 class UndoException < GameException; end
@@ -83,9 +83,9 @@ end
 board = ConsoleBoard.new
  
 player = {}
-##player[1] = HumanPlayer.new
+player[-1] = HumanPlayer.new
 player[1] = AIPlayer.new
-player[-1] = AIPlayer.new
+##player[-1] = AIPlayer.new
  
  
 loop do

@@ -1,9 +1,9 @@
 ﻿# -*- coding: utf-8 -*-
 # board.rb
  
-require 'point'
-require 'disc'
-require 'colorstorage'
+require './point'
+require './disc'
+require './colorstorage'
 #
 # Game Board
 #

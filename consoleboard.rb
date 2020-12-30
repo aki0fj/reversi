@@ -1,7 +1,7 @@
 ﻿# -*- coding: utf-8 -*-
 # boardtest.rb
  
-require "board"
+require "./board"
  
 class ConsoleBoard < Board
   def print_board

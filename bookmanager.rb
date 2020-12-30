@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # bookmanager.rb
  
-require 'point'
-require 'coordinatestransformer'
+require './point'
+require './coordinatestransformer'
  
 class BookManager
  

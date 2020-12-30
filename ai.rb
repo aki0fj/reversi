@@ -9,10 +9,10 @@ class AI
   PERFECT_DEPTH = 9 #13
  
 end
-require 'point'
-require 'disc'
-require 'board'
-require 'evaluator'
+require './point'
+require './disc'
+require './board'
+require './evaluator'
  
 class AlphaBetaAI < AI
   MAX_VALUE = 2 ** 30 - 1

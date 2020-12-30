@@ -1,8 +1,8 @@
 ﻿# -*- coding: utf-8 -*-
 # evaluator.rb
 
-require 'point'
-require 'board'
+require './point'
+require './board'
 
 #
 # Perfect Evaluator

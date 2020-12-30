@@ -1,7 +1,7 @@
 ﻿# -*- cording: utf-8 -*-
 # coordinatestransformer.rb
  
-require 'point'
+require './point'
  
 class CoordinatesTransformer
   def initialize(first)
